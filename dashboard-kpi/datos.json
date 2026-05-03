@@ -1,0 +1,51 @@
+{
+  "kpis": {
+    "pedidos_totales": 15,
+    "otif": 0.5333,
+    "on_time": 0.7333,
+    "in_full": 0.8000,
+    "perfect_order": 0.4000,
+    "fill_rate": 0.9355,
+    "avg_lead_time": 3.2,
+    "late_orders_rate": 0.2667,
+    "avg_delay": 1.5,
+    "return_rate": 0.2000,
+    "damage_rate": 0.0667,
+    "shipping_cost_per_order": 5.75,
+    "logistics_cost_pct_sales": 0.0696
+  },
+  "pareto": [
+    { "tipo": "Retraso",       "fallos": 3, "pct": 0.4286, "pct_acum": 0.4286 },
+    { "tipo": "RoturaStock",   "fallos": 2, "pct": 0.2857, "pct_acum": 0.7143 },
+    { "tipo": "Transportista", "fallos": 1, "pct": 0.1429, "pct_acum": 0.8571 },
+    { "tipo": "ErrorPicking",  "fallos": 1, "pct": 0.1429, "pct_acum": 1.0000 }
+  ],
+  "segmentacion_transportista": [
+    { "transportista": "A", "pedidos": 8, "otif": 0.625,  "on_time": 0.75,   "in_full": 0.875,  "perfecto": 0.375 },
+    { "transportista": "B", "pedidos": 7, "otif": 0.4286, "on_time": 0.7143, "in_full": 0.7143, "perfecto": 0.4286 }
+  ],
+  "segmentacion_zona": [
+    { "zona": "Este",  "pedidos": 4, "otif": 0.5000, "on_time": 0.75,   "in_full": 0.75,   "perfecto": 0.5000 },
+    { "zona": "Norte", "pedidos": 3, "otif": 0.6667, "on_time": 0.6667, "in_full": 1.0000, "perfecto": 0.3333 },
+    { "zona": "Oeste", "pedidos": 3, "otif": 0.6667, "on_time": 1.0000, "in_full": 0.6667, "perfecto": 0.3333 },
+    { "zona": "Sur",   "pedidos": 5, "otif": 0.4000, "on_time": 0.6000, "in_full": 0.8000, "perfecto": 0.4000 }
+  ],
+  "acciones": [
+    {
+      "num": 1,
+      "hipotesis": "Rutas ineficientes por parte de los transportistas",
+      "accion": "Especialización por zona de los transportistas según nivel de servicio histórico",
+      "kpi": "% A Tiempo (On-Time Delivery Rate)",
+      "segmentacion": "Transportista / Zona",
+      "meta": "> 90%"
+    },
+    {
+      "num": 2,
+      "hipotesis": "Ausencia de niveles de stock de seguridad y alertas de reposición automatizadas",
+      "accion": "Revisar gestión de inventario y establecer stock de seguridad mínimo por producto",
+      "kpi": "% Rotura de Stock / In-Full Rate",
+      "segmentacion": "Zona / Tipo_Incidencia",
+      "meta": "< 5%"
+    }
+  ]
+}
